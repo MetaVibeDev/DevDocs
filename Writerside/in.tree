@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="in"
-                 name="Instance Name"
+                 name="MetavibeDev"
                  start-page="Software_Delivery_Process.md">
 
     <toc-element topic="Software_Delivery_Process.md"/>
