@@ -43,6 +43,13 @@
 ## 交付时
 距离上一次需求会的第7个工作日，当天一定会发正式版本。这个步骤以后再描述如何自动化进行。
 
+eas build前置步骤（开发完成后）
+
+1. 和其他人确认git上是最终版代码，修改版本号，bundle号
+2. yarn ios --mode Release / yarn android --mode Release 测试release包，全面测试（叫UI一起）
+3. build，给UI和产品测试
+4. 确认没问题的情况下submit
+
 ## UI bug期
 正常来说这一步是不应该存在的，但是由于我们刚开始节奏很紧凑，UI的改动会很大。所以我们当前采取轮班制来修复[UI文档](https://zin8ujy4xk2.feishu.cn/base/Enz2bnuLlaQqV3saxsOcsFwYnDg)中提到的问题。
 
