@@ -1,0 +1,345 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "title": "",
+        "contact": {},
+        "version": ""
+    },
+    "host": "",
+    "basePath": "",
+    "paths": {
+        "/session/chat": {
+            "post": {
+                "tags": [
+                    "session"
+                ],
+                "summary": "ai对话",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "param",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ChatDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.ChatAPIRespDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/session/history": {
+            "get": {
+                "tags": [
+                    "session"
+                ],
+                "summary": "获取会话历史",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "session_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.HistoryDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/session/hobby": {
+            "post": {
+                "tags": [
+                    "session"
+                ],
+                "summary": "切换消息喜好",
+                "parameters": [
+                    {
+                        "description": "参数",
+                        "name": "param",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateMsgHobby"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/session/list": {
+            "get": {
+                "tags": [
+                    "session"
+                ],
+                "summary": "获取会话列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dto.SessDescDTO"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.ChatAPIRespDTO": {
+            "type": "object",
+            "properties": {
+                "choices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Choices"
+                    }
+                },
+                "created": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "object": {
+                    "type": "string"
+                },
+                "usage": {
+                    "$ref": "#/definitions/dto.Usage"
+                }
+            }
+        },
+        "dto.ChatDTO": {
+            "type": "object",
+            "required": [
+                "message_content",
+                "user_id"
+            ],
+            "properties": {
+                "message_content": {
+                    "type": "string"
+                },
+                "session_id": {
+                    "type": "string"
+                },
+                "stream": {
+                    "type": "boolean"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.Choices": {
+            "type": "object",
+            "properties": {
+                "delta": {
+                    "$ref": "#/definitions/dto.Delta"
+                },
+                "finish_reason": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "integer"
+                },
+                "message": {
+                    "$ref": "#/definitions/po.MessagePO"
+                },
+                "usage": {
+                    "$ref": "#/definitions/dto.Usage"
+                }
+            }
+        },
+        "dto.Delta": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.HistoryDTO": {
+            "type": "object",
+            "properties": {
+                "history_msg": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/po.MessagePO"
+                    }
+                },
+                "session_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.SessDescDTO": {
+            "type": "object",
+            "properties": {
+                "session_id": {
+                    "type": "string"
+                },
+                "session_title": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateMsgHobby": {
+            "type": "object",
+            "properties": {
+                "msg_id": {
+                    "type": "string"
+                },
+                "new_hobby": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.Usage": {
+            "type": "object",
+            "properties": {
+                "completion_tokens": {
+                    "type": "integer"
+                },
+                "prompt_tokens": {
+                    "type": "integer"
+                },
+                "total_tokens": {
+                    "type": "integer"
+                }
+            }
+        },
+        "po.MessagePO": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "integer"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "hobby": {
+                    "type": "integer"
+                },
+                "message_id": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "session_id": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
