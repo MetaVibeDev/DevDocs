@@ -11,5 +11,5 @@
 ![ai-history.png](ai-history.png) 
 
 ## API描述
-<api-doc openapi-path="../apis/faithtime-ai-api-swagger.json"></api-doc>
+<api-doc openapi-path="../../apis/faithtime-ai-api-swagger.json"></api-doc>
 https://faithtime-ai.metavibe-api.com/swagger/index.html#/session/post_session_chat
