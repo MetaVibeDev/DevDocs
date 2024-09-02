@@ -40,6 +40,18 @@
                             "type": "string"
                         }
                     },
+                    "413": {
+                        "description": "Request Entity Too Large",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "429": {
+                        "description": "Too Many Requests",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
@@ -84,45 +96,6 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/dto.HistoryDTO"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/session/hobby": {
-            "post": {
-                "tags": [
-                    "session"
-                ],
-                "summary": "切换消息喜好",
-                "parameters": [
-                    {
-                        "description": "参数",
-                        "name": "param",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/dto.UpdateMsgHobby"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
                         }
                     },
                     "400": {
@@ -276,6 +249,9 @@
         "dto.SessDescDTO": {
             "type": "object",
             "properties": {
+                "create_time": {
+                    "type": "string"
+                },
                 "session_id": {
                     "type": "string"
                 },
