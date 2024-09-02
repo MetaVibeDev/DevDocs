@@ -9,7 +9,7 @@
     <toc-element topic="Software_Delivery_Process.md" />
     <toc-element topic="Design.md">
         <toc-element topic="资源上传服务设计书.md"/>
-        <toc-element topic="AI 前端文档.md"/>
+        <toc-element topic="AI-前端文档.md"/>
         <toc-element topic="AI-后端文档.md"/>
     </toc-element>
 </instance-profile>
