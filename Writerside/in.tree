@@ -14,5 +14,6 @@
         <toc-element topic="AI-前端文档.md"/>
         <toc-element topic="AI-后端文档.md"/>
     </toc-element>
+    <toc-element topic="代祷告功能整体设计.md"/>
     <toc-element topic="Technology.md"/>
 </instance-profile>
