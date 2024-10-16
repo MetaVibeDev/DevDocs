@@ -27,7 +27,33 @@
 ###### 4. i18n的结构化组织
 *    之前由于没有详细了解i18n的写法所以将所有的都写在同一个文件的同一级下面，导致维护的时候会非常麻烦，添加的时候只能在底部加，后期行数多的话会比较冗余
   * 知识：将每个页面的翻译内容做一个父级，这个页面的翻译内容都放在这个父级下面，也相当于模块化，后期添加和维护起来，结构更加清晰
-   
 
+###### 5. 超轻量级状态管理库jotai（优点：超轻量！！！）
+[https://www.npmjs.com/package/jotai](https://www.npmjs.com/package/jotai)
+* 安装：
+<code-block>
+ yarn add jotai
+</code-block>
+* 使用（方法1）：
+<code-block lang="javascript">
+import { atom, useAtom } from 'jotai';
+const isVerifyCodeWrongTipOpenAtom = atom(false);//注册
+
+const [verifyCode, setVerifyCode] = useAtom(verifyCodeAtom);//像useState一样使用
+</code-block>
+* 使用（方法2）：
+<code-block lang="javascript">
+//use-isVerifyCodeWrongTipOpen.ts
+import { atom, useAtom } from "jotai";
+const isVerifyCodeWrongTipOpenAtom = atom(false);
+export const UseIsVerifyCodeWrongTipOpen = () => {
+  return useAtom(isVerifyCodeWrongTipOpenAtom);
+};
+
+//page.tsx
+import {UseIsVerifyCodeWrongTipOpen} from './use-isVerifyCodeWrongTipOpen'
+const [isVerifyCodeWrongTipOpen, setIsVerifyCodeWrongTipOpen] = UseIsVerifyCodeWrongTipOpen();
+setIsVerifyCodeWrongTipOpen(false)
+</code-block>
 
 
