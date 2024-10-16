@@ -8,6 +8,7 @@
 
     <toc-element topic="Software_Delivery_Process.md" />
     <toc-element topic="Design.md">
+        <toc-element topic="业务后端设计说明书.md"/>
         <toc-element topic="代祷告功能整体设计.md"/>
         <toc-element topic="i18中英文切换.md"/>
         <toc-element topic="Text-组件.md"/>
@@ -17,7 +18,7 @@
         <toc-element topic="AI-后端文档.md"/>
     </toc-element>
     <toc-element topic="Technology.md">
+        <toc-element topic="Pushy热更方案使用手册.md"/>
         <toc-element topic="AppSmith快速入门.md"/>
     </toc-element>
-    <toc-element topic="Pushy热更方案使用手册.md"/>
 </instance-profile>
