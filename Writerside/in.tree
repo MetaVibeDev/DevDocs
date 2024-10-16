@@ -19,4 +19,5 @@
     <toc-element topic="Technology.md">
         <toc-element topic="AppSmith快速入门.md"/>
     </toc-element>
+    <toc-element topic="Pushy热更方案使用手册.md"/>
 </instance-profile>
