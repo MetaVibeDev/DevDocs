@@ -56,4 +56,16 @@ const [isVerifyCodeWrongTipOpen, setIsVerifyCodeWrongTipOpen] = UseIsVerifyCodeW
 setIsVerifyCodeWrongTipOpen(false)
 </code-block>
 
+###### 6. setState 刷新机制
+setState只有当值发生改变时才会触发刷新，这里使用的值比较是浅比较，而使用Object（list也是Object的一种表现形式）进行传参时，往往使用的是地址，若仅对其中元素进行修改并使用set，则地址值未改变，不会触发页面刷新。
 
+所以当更新list时可以通过
+<code-block>  [...list] </code-block>
+将原列表展开后生成一个新列表，同理 object 可以使用  
+<code-block> {...object} </code-block>
+
+
+###### 7. 针对不同平台使用不同容器
+当出现IOS跟Android需要不同容器来包裹内容的情况，如果简单的使用三目运算符来判断使用哪一块代码，可能会造成大量代码的冗余，或者需要将部分代码封装。
+下面有个很简单的解决方案：
+![contaner_choice.png](contaner_choice.png) 
