@@ -56,7 +56,14 @@ const [isVerifyCodeWrongTipOpen, setIsVerifyCodeWrongTipOpen] = UseIsVerifyCodeW
 setIsVerifyCodeWrongTipOpen(false)
 </code-block>
 
-###### 6. setState 刷新机制
+##### 6. rn中虚线矩形的虚线生成起始点
+1. 直角矩形边缘起始点：如果是直角矩形的话，是从左上角开始顺时针生成一圈虚线，并且是从实心线段开始，实心线段-空心线段-实现线段-空心线段....，一直到一圈转完，最后一个实心线段或空心线段可能会和起始的实心线段重合
+2. 圆角矩形边缘起始点：如果是圆角矩形的话，实际上的起始点，是整个圆角矩形最靠左边的位置开始顺时针生成虚线的，但如果最靠左边的位置不是一个点，而是圆角矩形的左边直线，则会从这个左边直线的最下端开始
+
+##### 7. rn中矩形的strokeWidth参数注意事项
+* strokeWidth是不计算在圆角矩形的width和height内的，同时strokeWidth是以边线为中心向两侧扩散的，比如strokeWidth是12的话，如果圆角矩形的宽度是n，则算上边缘宽度的圆角矩形的实际宽度是n + 6(左边因为strokeWidth导致多出来6) + 6(右边也是同理) = n + 12。所以，如果想将圆角矩形放在长x高y的区域内，并且有strokeWidth为m的情况下，则应设定实际的圆角矩形的长高分别为x-m/y-m。
+
+###### 8. setState 刷新机制
 setState只有当值发生改变时才会触发刷新，这里使用的值比较是浅比较，而使用Object（list也是Object的一种表现形式）进行传参时，往往使用的是地址，若仅对其中元素进行修改并使用set，则地址值未改变，不会触发页面刷新。
 
 所以当更新list时可以通过
@@ -64,8 +71,7 @@ setState只有当值发生改变时才会触发刷新，这里使用的值比较
 将原列表展开后生成一个新列表，同理 object 可以使用  
 <code-block> {...object} </code-block>
 
-
-###### 7. 针对不同平台使用不同容器
+###### 9. 针对不同平台使用不同容器
 当出现IOS跟Android需要不同容器来包裹内容的情况，如果简单的使用三目运算符来判断使用哪一块代码，可能会造成大量代码的冗余，或者需要将部分代码封装。
 下面有个很简单的解决方案：
 ![contaner_choice.png](contaner_choice.png) 
