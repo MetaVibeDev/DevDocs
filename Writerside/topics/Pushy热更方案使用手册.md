@@ -16,7 +16,7 @@
 4. `cd ios && pod install`
 5. `pushy login`：登录pushy账号
    - 账号： 1554467581@qq.com
-   - 密码： zhusiyu1999
+   - 密码： Zhusiyu1999
 
 #### 打包+上传流程
 1. `eas build` ----生成安卓和ios包（和之前无区别） eg: eas build --platform android --profile production
