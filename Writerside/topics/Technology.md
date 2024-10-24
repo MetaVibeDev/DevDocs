@@ -62,3 +62,20 @@ setIsVerifyCodeWrongTipOpen(false)
 
 ##### 7. rn中矩形的strokeWidth参数注意事项
 * strokeWidth是不计算在圆角矩形的width和height内的，同时strokeWidth是以边线为中心向两侧扩散的，比如strokeWidth是12的话，如果圆角矩形的宽度是n，则算上边缘宽度的圆角矩形的实际宽度是n + 6(左边因为strokeWidth导致多出来6) + 6(右边也是同理) = n + 12。所以，如果想将圆角矩形放在长x高y的区域内，并且有strokeWidth为m的情况下，则应设定实际的圆角矩形的长高分别为x-m/y-m。
+
+###### 8. setState 刷新机制
+setState只有当值发生改变时才会触发刷新，这里使用的值比较是浅比较，而使用Object（list也是Object的一种表现形式）进行传参时，往往使用的是地址，若仅对其中元素进行修改并使用set，则地址值未改变，不会触发页面刷新。
+
+所以当更新list时可以通过
+<code-block>  [...list] </code-block>
+将原列表展开后生成一个新列表，同理 object 可以使用  
+<code-block> {...object} </code-block>
+
+###### 9. 针对不同平台使用不同容器
+当出现IOS跟Android需要不同容器来包裹内容的情况，如果简单的使用三目运算符来判断使用哪一块代码，可能会造成大量代码的冗余，或者需要将部分代码封装。
+下面有个很简单的解决方案：
+![contaner_choice.png](contaner_choice.png) 
+ 
+###### 10. 对于宽度的动画效果应该使用scaleX对宽度缩放
+在 React Native 中，直接对宽度进行动画处理可能不够流畅，因为它不支持“宽度”属性的动画。相反，使用 scaleX 来实现宽度动画效果的优点在于，scaleX 通过 GPU 加速进行处理，从而提供更平滑的性能。通过缩放，可以在不引发重排的情况下实现宽度变化，避免了在布局过程中的性能瓶颈，这使得动画看起来更加流畅和自然。
+
