@@ -1,0 +1,353 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "title": "",
+        "contact": {},
+        "version": ""
+    },
+    "host": "",
+    "basePath": "",
+    "paths": {
+        "/pet/beginTravel": {
+            "post": {
+                "description": "Begins travel for the pet.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Begin travel",
+                "parameters": [
+                    {
+                        "description": "Begin Travel Request",
+                        "name": "beginTravelDTO",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DTO.BeginTravelDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/checkDailyTasksRefreshed": {
+            "get": {
+                "description": "Checks if the daily tasks for the pet are refreshed.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Check daily tasks refreshed",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/checkTravelFinished": {
+            "get": {
+                "description": "Checks if the travel for the pet has finished.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Check travel finished",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/getData": {
+            "get": {
+                "description": "Retrieves pet data based on the request.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Get pet data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/update": {
+            "post": {
+                "description": "Updates pet data provided in the request body.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Update pet data",
+                "parameters": [
+                    {
+                        "description": "Pet Update Data",
+                        "name": "petUpdateDTO",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DTO.PetUpdateDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "DTO.ActionDTO": {
+            "type": "object",
+            "properties": {
+                "action_detail": {
+                    "description": "Detailed description of the action",
+                    "type": "string",
+                    "example": "Button_click"
+                },
+                "action_type": {
+                    "description": "The type of the action\nIt must be one of the following: \"click\", \"duration\", \"exposure\".",
+                    "type": "string",
+                    "example": "click"
+                },
+                "app_name": {
+                    "description": "Name of the app",
+                    "type": "string",
+                    "example": "MyApp"
+                },
+                "duration": {
+                    "description": "Duration for which the action lasted",
+                    "type": "integer",
+                    "example": 6000
+                },
+                "platform": {
+                    "description": "Platform on which the action was performed\nIt must be one of the following: \"click\", \"duration\", \"exposure\".",
+                    "type": "string",
+                    "example": "IOS"
+                },
+                "time": {
+                    "description": "Time when the action occured",
+                    "type": "string",
+                    "example": "2022-05-01T15:04:05Z"
+                },
+                "user_id": {
+                    "description": "The id of user",
+                    "type": "string",
+                    "example": "cjaaa"
+                }
+            }
+        },
+        "DTO.BeginTravelDTO": {
+            "type": "object",
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "DTO.LoginDTO": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "description": "the name of the app",
+                    "type": "string",
+                    "example": "MyApp"
+                },
+                "app_version": {
+                    "description": "the version of the app",
+                    "type": "string",
+                    "example": "1.0.0"
+                },
+                "device_type": {
+                    "description": "the device type of the user",
+                    "type": "string",
+                    "example": "iPhone 15"
+                },
+                "ip": {
+                    "description": "IP represents the IP address of a user.",
+                    "type": "string"
+                },
+                "is_first_login": {
+                    "description": "IsFirstLogin is a boolean field indicating whether the login is the user's first login.",
+                    "type": "boolean",
+                    "example": false
+                },
+                "language": {
+                    "description": "the language of the user",
+                    "type": "string",
+                    "example": "en"
+                },
+                "login_time": {
+                    "description": "the login time",
+                    "type": "string",
+                    "example": "2022-05-01T15:04:05Z"
+                },
+                "platform": {
+                    "description": "the platform of the device",
+                    "type": "string",
+                    "example": "iOS"
+                },
+                "screen_height": {
+                    "description": "the height of the screen",
+                    "type": "integer",
+                    "maximum": 100000,
+                    "minimum": 0,
+                    "example": 1080
+                },
+                "screen_width": {
+                    "description": "the width of the screen",
+                    "type": "integer",
+                    "maximum": 100000,
+                    "minimum": 0,
+                    "example": 1920
+                },
+                "user_id": {
+                    "description": "The id of user",
+                    "type": "string",
+                    "example": "cjaaa"
+                }
+            }
+        },
+        "DTO.PetUpdateDTO": {
+            "type": "object",
+            "required": [
+                "spiritual_point",
+                "user_id"
+            ],
+            "properties": {
+                "spiritual_point": {
+                    "type": "integer"
+                },
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DTO.Task"
+                    }
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "DTO.Task": {
+            "type": "object",
+            "properties": {
+                "achieved": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
