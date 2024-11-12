@@ -69,7 +69,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/DTO.CheckDailyTasksRefreshResponseDTO"
                         }
                     },
                     "400": {
@@ -106,7 +106,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/DTO.CheckTravelFinishResponseDTO"
                         }
                     },
                     "400": {
@@ -143,7 +143,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/DTO.GetDataResponseDTO"
                         }
                     },
                     "400": {
@@ -246,11 +246,60 @@
         "DTO.BeginTravelDTO": {
             "type": "object",
             "required": [
+                "content_id",
                 "user_id"
             ],
             "properties": {
+                "content_id": {
+                    "type": "string"
+                },
                 "user_id": {
                     "type": "string"
+                }
+            }
+        },
+        "DTO.CheckDailyTasksRefreshResponseDTO": {
+            "type": "object",
+            "properties": {
+                "is_refreshed": {
+                    "type": "boolean"
+                },
+                "remaining_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DTO.CheckTravelFinishResponseDTO": {
+            "type": "object",
+            "properties": {
+                "content_id": {
+                    "type": "string"
+                },
+                "is_finished": {
+                    "type": "boolean"
+                },
+                "remaining_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DTO.GetDataResponseDTO": {
+            "type": "object",
+            "properties": {
+                "refresh_remaining": {
+                    "type": "integer"
+                },
+                "spiritual_point": {
+                    "type": "integer"
+                },
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DTO.Task"
+                    }
+                },
+                "travel_remaining": {
+                    "type": "integer"
                 }
             }
         },
