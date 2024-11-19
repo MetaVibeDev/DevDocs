@@ -124,6 +124,43 @@
                 }
             }
         },
+        "/pet/evolve": {
+            "post": {
+                "description": "evolve pet data provided in the request body.",
+                "tags": [
+                    "pet"
+                ],
+                "summary": "pet evolve",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/pet/getData": {
             "get": {
                 "description": "Retrieves pet data based on the request.",
@@ -143,7 +180,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/DTO.GetDataResponseDTO"
+                            "$ref": "#/definitions/DTO.PetDTO"
                         }
                     },
                     "400": {
@@ -283,26 +320,6 @@
                 }
             }
         },
-        "DTO.GetDataResponseDTO": {
-            "type": "object",
-            "properties": {
-                "refresh_remaining": {
-                    "type": "integer"
-                },
-                "spiritual_point": {
-                    "type": "integer"
-                },
-                "tasks": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/DTO.Task"
-                    }
-                },
-                "travel_remaining": {
-                    "type": "integer"
-                }
-            }
-        },
         "DTO.LoginDTO": {
             "type": "object",
             "properties": {
@@ -366,13 +383,53 @@
                 }
             }
         },
+        "DTO.PetDTO": {
+            "type": "object",
+            "properties": {
+                "consecutive_process": {
+                    "type": "integer"
+                },
+                "content_id": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "integer"
+                },
+                "max_consecutive_process": {
+                    "type": "integer"
+                },
+                "max_total_process": {
+                    "type": "integer"
+                },
+                "refresh_remaining": {
+                    "type": "integer"
+                },
+                "spiritual_point": {
+                    "type": "integer"
+                },
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DTO.Task"
+                    }
+                },
+                "total_process": {
+                    "type": "integer"
+                },
+                "travel_remaining": {
+                    "type": "integer"
+                }
+            }
+        },
         "DTO.PetUpdateDTO": {
             "type": "object",
             "required": [
-                "spiritual_point",
                 "user_id"
             ],
             "properties": {
+                "reduce_travel_time": {
+                    "type": "integer"
+                },
                 "spiritual_point": {
                     "type": "integer"
                 },
