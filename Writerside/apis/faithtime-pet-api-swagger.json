@@ -308,6 +308,41 @@
                 }
             }
         },
+        "/test/finishTravel": {
+            "post": {
+                "tags": [
+                    "test"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/test/fullPoint": {
             "post": {
                 "tags": [
@@ -349,6 +384,12 @@
                     "test"
                 ],
                 "parameters": [
+                    {
+                        "type": "string",
+                        "name": "content_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "name": "user_id",
