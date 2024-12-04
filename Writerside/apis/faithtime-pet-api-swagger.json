@@ -238,6 +238,151 @@
                 }
             }
         },
+        "/task/checkIn": {
+            "post": {
+                "description": "打卡并返回更新后的数据",
+                "tags": [
+                    "task"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DTO.CheckInRecordsDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/completeTask": {
+            "post": {
+                "description": "完成任务后返回修改后的任务信息",
+                "tags": [
+                    "task"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "task_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DTO.TaskDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/getCheckInRecords": {
+            "get": {
+                "description": "获取打卡数据",
+                "tags": [
+                    "task"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DTO.CheckInRecordsDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/getTaskData": {
+            "get": {
+                "description": "返回当天的任务数据",
+                "tags": [
+                    "task"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "user_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DTO.TaskDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/test/addConsecutiveProcess": {
             "post": {
                 "tags": [
@@ -526,6 +671,23 @@
                 }
             }
         },
+        "DTO.CheckInRecordsDTO": {
+            "type": "object",
+            "properties": {
+                "check_in_streak_days": {
+                    "type": "integer"
+                },
+                "max_streak_days": {
+                    "type": "integer"
+                },
+                "records": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "DTO.CheckTravelFinishResponseDTO": {
             "type": "object",
             "properties": {
@@ -672,6 +834,23 @@
                 },
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "DTO.TaskDTO": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "experience_gain": {
+                    "type": "integer"
+                },
+                "spiritual_stone_gain": {
+                    "type": "integer"
+                },
+                "task_id": {
+                    "type": "integer"
                 }
             }
         }
